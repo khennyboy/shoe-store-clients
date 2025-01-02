@@ -14,7 +14,7 @@ export default function Nav() {
       </div>
 
       <h1 className="flex-1 text-[1.3rem] font-bold">SoleMate</h1>
-      <div className="fixed left-0 right-0 top-8 z-50 mx-auto h-0 w-0 space-y-4 overflow-hidden rounded-md bg-DarkOrange px-10 pb-12 pt-8 shadow-md">
+      <div className="fixed left-0 right-0 top-8 z-50 mx-auto h-0 w-0 space-y-4 overflow-hidden rounded-md bg-DarkOrange shadow-md">
         <button className="navBtn">
           <span className="cursor-pointer">Collections</span>
         </button>
@@ -40,3 +40,5 @@ export default function Nav() {
     </nav>
   );
 }
+
+// px-10 pb-12 pt-8
