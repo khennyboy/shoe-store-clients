@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .navBtn {
-  @apply block w-full cursor-default border-b-2 border-b-black/20 text-start text-white opacity-80 transition-all duration-300 ease-linear hover:opacity-100;
+  @apply block w-full cursor-default border-b-2 border-b-black/20 text-start text-white transition-all duration-300 ease-linear hover:opacity-70 md:w-fit md:border-b-0 md:text-black;
 }
 
 .navBtn span {

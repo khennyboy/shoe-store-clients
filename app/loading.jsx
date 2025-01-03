@@ -1,16 +1,7 @@
-'use client'
-import {Bars} from 'react-loader-spinner';
-const Spinner = ({ loading }) => {
-  return (
-    <div className='flex items-center justify-center w-full left-0 fixed top-0  h-[100vh]'>
-        <Bars
-            color='hsl(26, 100%, 55%)'
-            width= '100'
-            height='150'
-            loading={loading}
-        />
-    </div>
-  );
-};
+import { ClipLoader } from "react-spinners";
 
-export default Spinner
+function Loader() {
+  return <ClipLoader color="#123abc" loading={true} size={50} />;
+}
+
+export default Loader;
