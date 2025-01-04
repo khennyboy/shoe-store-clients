@@ -78,15 +78,25 @@ export default function Nav() {
             (each.name === "Women" && isFilter === "women");
 
           return (
-            <Link
-              href={each.path}
-              className={`navBtn py-4 font-medium md:py-6 hover:md:border-b-4 hover:md:border-b-DarkOrange ${
-                isActive ? "bg-DarkOrange text-white" : ""
+            <div
+              className={`relative block w-full cursor-default border-b-2 py-4 text-start font-medium text-white transition-all duration-300 ease-linear hover:opacity-100 md:w-fit md:border-b-0 md:py-6 md:text-black ${
+                isActive
+                  ? "border-b-white opacity-100 md:border-b-4 md:border-b-DarkOrange"
+                  : "border-b-black/20 opacity-70 hover:md:border-b-4 hover:md:border-b-DarkOrange"
               }`}
               key={index}
             >
-              <span>{each.name}</span>
-            </Link>
+              <Link
+                href={each.path}
+                onClick={() => {
+                  if (openNav) {
+                    setOpenNav(false);
+                  }
+                }}
+              >
+                {each.name}
+              </Link>
+            </div>
           );
         })}
       </div>

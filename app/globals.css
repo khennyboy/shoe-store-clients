@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 .navBtn {
-  @apply block w-full cursor-default border-b-2 border-b-black/20 text-start text-white transition-all duration-300 ease-linear hover:opacity-70 md:w-fit md:border-b-0 md:text-black;
+  @apply relative;
 }
 
-.navBtn span {
-  @apply cursor-pointer;
+.navBtn.active::after {
+  content: "";
+  @apply absolute bottom-0 left-0 h-[4px] w-full bg-DarkOrange;
 }
