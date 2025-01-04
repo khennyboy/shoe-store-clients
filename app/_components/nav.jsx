@@ -1,18 +1,29 @@
 "use client";
-import Image from "next/image";
-import Cart from "./cart";
-import Profile from "./profile";
-import Login from "./login";
-import open from "@/public/icon-menu.svg";
 import close from "@/public/icon-close.svg";
+import open from "@/public/icon-menu.svg";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
+import Cart from "./cart";
+import Login from "./login";
 import useNav from "./navhooks";
+import Profile from "./profile";
 
-const path = ["Collections", "Men", "Women", "About", "Contact"];
+const navLinks = [
+  { name: "Collections", path: "/" },
+  { name: "Men", path: "/?filter=men" },
+  { name: "Women", path: "/?filter=women" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+];
 
 export default function Nav() {
   const [openNav, setOpenNav] = useState(false);
+  const pathname = usePathname();
   const navRef = useRef();
+  const searchParams = useSearchParams();
+
   function toggleIcon() {
     setOpenNav((prev) => !prev);
   }
@@ -30,16 +41,17 @@ export default function Nav() {
       ref={navRef}
       className="flex items-center gap-4 border-b-[3px] border-b-black/20 py-2 sm:gap-6 md:py-0 lg:gap-8 xl:gap-10"
     >
-      <div
+      <button
         className={`cursor-pointer md:hidden ${openNav ? "fixed right-[40%] top-6 z-[100]" : "relative right-0 top-0 z-0"}`}
         onClick={() => toggleIcon()}
+        aria-expanded={openNav}
       >
         <Image
           src={menuIcon}
           alt="toggle-menu-icon"
           className={`${openNav ? "w-6" : "w-fit"}`}
         />
-      </div>
+      </button>
 
       <h1 className="flex-1 text-[1.3rem] font-bold md:flex-initial">
         SoleMate
@@ -54,14 +66,27 @@ export default function Nav() {
           transformOrigin: "top center",
         }}
       >
-        {path.map((each, index) => {
+        {navLinks.map((each, index) => {
+          const isFilter = searchParams.get("filter");
+
+          const isActive =
+            (each.path === pathname && each.name !== "Collections") ||
+            (each.name === "Collections" &&
+              isFilter === null &&
+              each.path === pathname) ||
+            (each.name === "Men" && isFilter === "men") ||
+            (each.name === "Women" && isFilter === "women");
+
           return (
-            <button
-              className="navBtn py-4 font-medium md:py-6 hover:md:border-b-4 hover:md:border-b-DarkOrange"
+            <Link
+              href={each.path}
+              className={`navBtn py-4 font-medium md:py-6 hover:md:border-b-4 hover:md:border-b-DarkOrange ${
+                isActive ? "bg-DarkOrange text-white" : ""
+              }`}
               key={index}
             >
-              <span>{each}</span>
-            </button>
+              <span>{each.name}</span>
+            </Link>
           );
         })}
       </div>
