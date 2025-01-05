@@ -20,7 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${kumbh.className} px-4 lg:px-8 xl:px-16`}>
+      <body
+        className={`${kumbh.className} mt-20 px-4 lg:px-8 xl:mt-24 xl:px-12`}
+      >
         <Nav />
         <div>{children}</div>
       </body>

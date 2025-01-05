@@ -39,15 +39,16 @@ export default function Nav() {
   return (
     <nav
       ref={navRef}
-      className="flex items-center gap-4 border-b-[3px] border-b-black/20 py-2 sm:gap-6 md:py-0 lg:gap-8 xl:gap-10"
+      className="fixed left-0 top-0 flex w-full items-center gap-4 px-4 py-2 after:absolute after:bottom-0 after:left-0 after:z-50 after:w-full after:border-b-2 after:border-b-black/20 sm:gap-6 md:py-0 lg:gap-8 lg:px-8 xl:gap-10 xl:px-12"
     >
       <button
-        className={`cursor-pointer md:hidden ${openNav ? "fixed right-[40%] top-6 z-[100]" : "relative right-0 top-0 z-0"}`}
+        className={`cursor-pointer md:hidden ${openNav ? "fixed right-[40%] top-6 z-[150]" : "relative right-0 top-0 z-0"}`}
         onClick={() => toggleIcon()}
         aria-expanded={openNav}
       >
         <Image
           src={menuIcon}
+          unoptimized
           alt="toggle-menu-icon"
           className={`${openNav ? "w-6" : "w-fit"}`}
         />
@@ -57,9 +58,9 @@ export default function Nav() {
         SoleMate
       </h1>
       <div
-        className={`fixed left-0 top-0 z-50 items-center gap-4 overflow-hidden transition-transform duration-200 ease-linear sm:gap-6 md:relative md:top-0 md:flex md:h-fit md:w-fit md:flex-1 md:scale-100 lg:gap-4 xl:gap-10 ${
+        className={`fixed left-0 top-0 items-center gap-1 overflow-hidden transition-transform duration-200 ease-linear sm:gap-6 md:relative md:top-0 md:flex md:h-fit md:w-fit md:flex-1 md:scale-100 lg:gap-2 ${
           openNav
-            ? "w-[80%] scale-100 bg-DarkOrange p-10 shadow-md"
+            ? "z-[100] w-[80%] scale-100 space-y-2 bg-DarkOrange px-8 py-12 shadow-md"
             : "h-0 w-0 scale-0"
         }`}
         style={{
@@ -79,14 +80,11 @@ export default function Nav() {
 
           return (
             <div
-              className={`relative block w-full cursor-default border-b-2 py-4 text-start font-medium text-white transition-all duration-300 ease-linear hover:opacity-100 md:w-fit md:border-b-0 md:py-6 md:text-black ${
-                isActive
-                  ? "border-b-white opacity-100 md:border-b-4 md:border-b-DarkOrange"
-                  : "border-b-black/20 opacity-70 hover:md:border-b-4 hover:md:border-b-DarkOrange"
-              }`}
+              className={`relative border-b-2 py-2 text-start font-medium text-white md:w-fit md:border-b-0 md:py-5 md:text-black lg:py-6 ${isActive ? "border-b-white/80" : "border-b-white/20"}`}
               key={index}
             >
               <Link
+                className={`relative transition-all duration-300 ease-linear after:w-full hover:opacity-100 hover:after:h-fit md:p-4 md:px-2 md:after:py-4 md:hover:after:absolute md:hover:after:inset-0 md:hover:after:-z-50 md:hover:after:m-auto md:hover:after:rounded md:hover:after:bg-gray-100 md:hover:after:py-4 lg:px-4 ${isActive ? "opacity-100" : "opacity-70"}`}
                 href={each.path}
                 onClick={() => {
                   if (openNav) {
@@ -96,6 +94,9 @@ export default function Nav() {
               >
                 {each.name}
               </Link>
+              <div
+                className={`left-0 md:absolute md:bottom-0 md:h-[3px] md:w-full ${isActive ? "md:bg-DarkOrange" : ""}`}
+              ></div>
             </div>
           );
         })}
