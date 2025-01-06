@@ -1,14 +1,18 @@
 "use client";
+
 import close from "@/public/icon-close.svg";
 import open from "@/public/icon-menu.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useRef, useState } from "react";
-import Cart from "./cart";
-import Login from "./login";
+import { useRef, useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import useNav from "./navhooks";
-import Profile from "./profile";
+
+// Dynamically import components
+const Cart = dynamic(() => import("./cart"), { suspense: true });
+const Login = dynamic(() => import("./login"), { suspense: true });
+const Profile = dynamic(() => import("./profile"), { suspense: true });
 
 const navLinks = [
   { name: "Collections", path: "/" },
@@ -39,11 +43,11 @@ export default function Nav() {
   return (
     <nav
       ref={navRef}
-      className="fixed left-0 top-0 flex w-full items-center gap-4 px-4 py-2 after:absolute after:bottom-0 after:left-0 after:z-50 after:w-full after:border-b-2 after:border-b-black/20 sm:gap-6 md:py-0 lg:gap-8 lg:px-8 xl:gap-10 xl:px-12"
+      className="fixed left-0 top-0 flex w-full items-center gap-4 px-4 py-2 shadow-md sm:gap-6 md:py-0 lg:gap-8 lg:px-8 xl:gap-10 xl:px-12"
     >
       <button
         className={`cursor-pointer md:hidden ${openNav ? "fixed right-[40%] top-6 z-[150]" : "relative right-0 top-0 z-0"}`}
-        onClick={() => toggleIcon()}
+        onClick={toggleIcon}
         aria-expanded={openNav}
       >
         <Image
@@ -95,15 +99,23 @@ export default function Nav() {
                 {each.name}
               </Link>
               <div
-                className={`left-0 md:absolute md:bottom-0 md:h-[3px] md:w-full ${isActive ? "md:bg-DarkOrange" : ""}`}
+                className={`left-0 md:absolute md:bottom-0 md:h-[2px] md:w-full ${isActive ? "md:bg-DarkOrange" : ""}`}
               ></div>
             </div>
           );
         })}
       </div>
-      <Cart />
-      <Profile />
-      <Login />
+
+      {/* Suspense boundaries for dynamic components */}
+      <Suspense fallback={<div>Loading Cart...</div>}>
+        <Cart />
+      </Suspense>
+      <Suspense fallback={<div>Loading Profile...</div>}>
+        <Profile />
+      </Suspense>
+      <Suspense fallback={<div>Loading Login...</div>}>
+        <Login />
+      </Suspense>
     </nav>
   );
 }
