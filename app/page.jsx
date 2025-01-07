@@ -3,7 +3,7 @@ import Image from "next/image";
 import Pagination from "./_components/pagination";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PAGE_SIZE } from "./utils/constant";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -74,7 +74,11 @@ export default function Home() {
         ))}
       </div>
       {/* this improves when the user input the page manually */}
-      {arr.length !== 0 && <Pagination count={products.length} />}
+      {arr.length !== 0 && (
+        <Suspense>
+          <Pagination count={products.length} />
+        </Suspense>
+      )}
     </div>
   );
 }
