@@ -27,7 +27,9 @@ export default function RootLayout({ children }) {
         <Suspense fallback="loading...">
           <Nav />
         </Suspense>
-        <div className="">{children}</div>
+        <div className="">
+          {<Suspense fallback="loading...">children</Suspense>}
+        </div>
       </body>
     </html>
   );
