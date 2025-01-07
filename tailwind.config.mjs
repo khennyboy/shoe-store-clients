@@ -26,7 +26,10 @@ module.exports = {
         },
       },
       screens: {
-        sm2: { min: "420px" },
+        sm2: "480px",
+      },
+      boxShadow: {
+        sm2: "0px 2px , 0px -2px , 2px 0px, -2px 0 ",
       },
     },
   },
