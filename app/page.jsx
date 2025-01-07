@@ -14,7 +14,7 @@ export default function Home() {
                 src="/image-product-2.jpg"
                 alt="product-image"
                 fill
-                className="object-cover"
+                className="cursor-zoom-out object-cover"
               />
             </div>
             <div className="p-4">
