@@ -1,6 +1,7 @@
 import { Kumbh_Sans } from "next/font/google";
 import "./globals.css";
 import Nav from "./_components/nav";
+import { Suspense } from "react";
 
 const kumbh = Kumbh_Sans({
   subsets: ["latin"],
@@ -23,8 +24,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${kumbh.className} mb-12 mt-24 px-4 lg:mt-28 lg:px-8 xl:px-12`}
       >
-        <Nav />
-
+        <Suspense fallback="loading...">
+          <Nav />
+        </Suspense>
         <div className="">{children}</div>
       </body>
     </html>

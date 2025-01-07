@@ -3,7 +3,7 @@ import Image from "next/image";
 import Pagination from "./_components/pagination";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PAGE_SIZE } from "./utils/constant";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Home() {
   const searchParams = useSearchParams();
