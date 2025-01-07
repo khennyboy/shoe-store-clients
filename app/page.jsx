@@ -2,24 +2,21 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="bg-gray-100 p-4">
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+    <div className="bg-gray-100 px-2 py-4">
+      <div className="sm2:grid-cols-2 grid gap-x-2 gap-y-8 lg:grid-cols-3 xl:grid-cols-4">
         {Array.from({ length: 20 }, (_, index) => (
           <div
             key={index}
-            className="overflow-hidden rounded-lg bg-white shadow-md transition-transform hover:scale-105"
+            className="overflow-hidden rounded-lg bg-white shadow-md transition-transform"
           >
-            {/* Product Image */}
             <div className="relative h-48">
               <Image
-                src="/image-avatar.png"
+                src="/image-product-2.jpg"
                 alt="product-image"
                 fill
                 className="object-cover"
               />
             </div>
-
-            {/* Product Info */}
             <div className="p-4">
               <span className="block text-lg font-semibold text-gray-800">
                 Adidas
@@ -35,6 +32,9 @@ export default function Home() {
                   -47%
                 </span>
               </div>
+            </div>
+            <div>
+              <button>Add to Cart</button>
             </div>
           </div>
         ))}
