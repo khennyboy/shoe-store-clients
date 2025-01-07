@@ -24,9 +24,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${kumbh.className} mb-12 mt-24 px-4 lg:mt-28 lg:px-8 xl:px-12`}
       >
-        <Suspense fallback="loading...">
-          <Nav />
-        </Suspense>
+        {/* <Suspense fallback="loading..."> */}
+        <Nav />
+        {/* </Suspense> */}
         <div className="">{children}</div>
       </body>
     </html>
