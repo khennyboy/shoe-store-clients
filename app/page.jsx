@@ -74,11 +74,7 @@ export default function Home() {
         ))}
       </div>
       {/* this improves when the user input the page manually */}
-      {arr.length !== 0 && (
-        <Suspense>
-          <Pagination count={products.length} />
-        </Suspense>
-      )}
+      {arr.length !== 0 && <Pagination count={products.length} />}
     </div>
   );
 }
