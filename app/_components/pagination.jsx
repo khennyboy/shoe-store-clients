@@ -33,45 +33,41 @@ export default function Pagination({ count }) {
   if (pageCount <= 1) return null;
 
   return (
-    <div className="mt-10 flex items-center justify-center gap-2">
-      <button
-        onClick={prevPage}
-        disabled={currentPage === 1}
-        className={`rounded-md px-4 py-2 text-sm font-medium transition ${
-          currentPage === 1
-            ? "cursor-not-allowed bg-gray-200 text-gray-500"
-            : "cursor-pointer bg-blue-500 text-white hover:bg-blue-600"
-        }`}
-      >
-        <GrFormPrevious size={20} />
-      </button>
-
-      {Array.from({ length: pageCount }, (_, index) => (
+    <div className="mx-auto flex w-[95%] justify-center sm:w-[70%] lg:w-1/2">
+      <div className="paginate mt-10 flex items-center justify-items-center gap-2 overflow-x-auto py-4 *:flex-shrink-0">
         <button
-          key={index}
-          onClick={() => updatePage(index + 1)}
-          disabled={currentPage === index + 1}
-          className={`rounded-md px-4 py-2 text-sm font-medium transition ${
-            currentPage === index + 1
-              ? "cursor-not-allowed bg-blue-500 text-white"
-              : "cursor-pointer bg-gray-100 text-black hover:bg-gray-200"
+          onClick={prevPage}
+          disabled={currentPage === 1}
+          className={`flex aspect-square w-8 items-center justify-center bg-DarkOrange text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/70 ${
+            currentPage === 1 ? "cursor-not-allowed" : "cursor-pointer"
           }`}
         >
-          {index + 1}
+          <GrFormPrevious size={20} />
         </button>
-      ))}
-
-      <button
-        onClick={nextPage}
-        disabled={currentPage === pageCount}
-        className={`rounded-md px-4 py-2 text-sm font-medium transition ${
-          currentPage === pageCount
-            ? "cursor-not-allowed bg-gray-200 text-gray-500"
-            : "cursor-pointer bg-blue-500 text-white hover:bg-blue-600"
-        }`}
-      >
-        <GrFormNext size={20} />
-      </button>
+        {Array.from({ length: pageCount }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => updatePage(index + 1)}
+            disabled={currentPage === index + 1}
+            className={`aspect-square w-8 text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange ${
+              currentPage === index + 1
+                ? "cursor-not-allowed bg-DarkOrange"
+                : "cursor-pointer bg-DarkOrange/50"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button
+          onClick={nextPage}
+          disabled={currentPage === pageCount}
+          className={`flex aspect-square w-8 items-center justify-center bg-DarkOrange text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/70 ${
+            currentPage === pageCount ? "cursor-not-allowed" : "cursor-pointer"
+          }`}
+        >
+          <GrFormNext size={20} />
+        </button>
+      </div>
     </div>
   );
 }

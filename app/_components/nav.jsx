@@ -39,7 +39,7 @@ export default function Nav() {
   return (
     <nav
       ref={navRef}
-      className="fixed left-0 top-0 z-[1000] flex w-full items-center gap-4 bg-white px-4 py-2 shadow-md sm:gap-6 md:py-0 lg:gap-8 lg:px-8 xl:gap-10 xl:px-12"
+      className="fixed left-0 top-0 z-[1000] flex w-full items-center gap-4 bg-white px-4 py-2 shadow-md sm:gap-6 md:px-8 md:py-0 lg:gap-8 xl:gap-10 xl:px-12"
     >
       <button
         className={`cursor-pointer md:hidden ${openNav ? "fixed right-[40%] top-6 z-[150]" : "relative right-0 top-0 z-0"}`}

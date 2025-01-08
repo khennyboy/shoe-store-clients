@@ -12,7 +12,7 @@ export default function Home() {
 
   let currentPage = searchParams.get("page") ?? 1;
 
-  const products = Array.from({ length: 20 }, (_, index) => index);
+  const products = Array.from({ length: 100 }, (_, index) => index);
 
   const pageCount = Math.ceil(products.length / PAGE_SIZE);
 
@@ -51,12 +51,10 @@ export default function Home() {
             </div>
 
             <div className="">
-              <span className="block text-lg font-semibold leading-normal text-gray-800">
+              <span className="block text-base leading-normal text-gray-800 sm:text-lg md:font-medium">
                 Adidas{each}
               </span>
-              <span className="block font-semibold leading-tight">
-                ₦132,785
-              </span>
+              <span className="block leading-tight">₦132,785</span>
               <div className="flex items-center justify-between">
                 <span className="text-sm line-through">$250,000</span>
                 <span className="bg-PaleOrange px-[6px] py-[2px] text-sm font-semibold text-DarkOrange">
@@ -65,8 +63,12 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <button className="flex w-full items-center justify-center gap-3 rounded-md bg-DarkOrange py-3 text-center font-bold text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/80">
-                <img src="/icon-cart.svg" alt="cart-icon" />
+              <button className="flex w-full items-center justify-center gap-3 rounded-md bg-DarkOrange py-3 text-center font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/80 sm:font-bold">
+                <img
+                  src="/icon-cart.svg"
+                  alt="cart-icon "
+                  className="hidden sm:block"
+                />
                 Add to Cart
               </button>
             </div>
