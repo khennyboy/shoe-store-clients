@@ -35,35 +35,41 @@ export default function Home() {
 
   return (
     <div className="bg-gray-100 px-2 py-12 md:px-4 lg:py-16">
-      <div className="grid gap-x-3 gap-y-10 sm2:grid-cols-2 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4 lg:gap-y-14">
+      <div className="grid gap-3 sm2:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-4">
         {arr.map((each, index) => (
           <div
             key={index}
-            className="cursor-pointer space-y-4 rounded-md px-4 py-8 shadow-sm2 shadow-gray-300"
+            className="cursor-pointer space-y-2 rounded-md px-1 py-1 shadow-sm2 shadow-gray-200"
           >
-            <div className="relative mx-auto h-60">
-              <Image
-                src="/image-product-2.jpg"
-                alt="product-image"
-                fill
-                className="cursor-zoom-in object-cover"
-              />
+            <div className="grid h-52 items-center">
+              <div className="relative h-[90%]">
+                <Image
+                  src="/image-product-2.jpg"
+                  alt="product-image"
+                  fill
+                  className="cursor-zoom-in rounded-md object-cover"
+                />
+              </div>
             </div>
 
             <div className="">
-              <span className="block text-base leading-normal text-gray-800 sm:text-lg md:font-medium">
+              <span className="block text-base leading-normal text-gray-800 lg:text-base">
                 Adidas{each}
               </span>
-              <span className="block leading-tight">₦132,785</span>
+              <span className="block text-sm font-semibold leading-tight">
+                <span className="mr-2">₦</span>132,785
+              </span>
               <div className="flex items-center justify-between">
-                <span className="text-sm line-through">$250,000</span>
-                <span className="bg-PaleOrange px-[6px] py-[2px] text-sm font-semibold text-DarkOrange">
+                <span className="text-sm line-through opacity-60">
+                  $250,000
+                </span>
+                <span className="bg-PaleOrange px-[6px] py-[2px] text-sm text-DarkOrange">
                   -47%
                 </span>
               </div>
             </div>
             <div>
-              <button className="flex w-full items-center justify-center gap-3 rounded-md bg-DarkOrange py-3 text-center font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/80 sm:font-bold">
+              <button className="flex w-full items-center justify-center gap-3 rounded-md bg-DarkOrange py-2 text-center text-sm font-semibold text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/80 sm:py-3 lg:font-bold">
                 <img
                   src="/icon-cart.svg"
                   alt="cart-icon "
