@@ -34,11 +34,11 @@ export default function Pagination({ count }) {
 
   return (
     <div className="mx-auto flex w-[95%] justify-center sm:w-[70%] lg:w-1/2">
-      <div className="paginate mt-10 flex items-center justify-items-center gap-2 overflow-x-auto py-4 *:flex-shrink-0">
+      <div className="paginate mt-10 grid auto-cols-[32px] grid-flow-col gap-2 overflow-x-auto py-4">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
-          className={`flex aspect-square w-8 items-center justify-center bg-DarkOrange text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/70 ${
+          className={`flex aspect-square items-center justify-center bg-DarkOrange text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/70 ${
             currentPage === 1 ? "cursor-not-allowed" : "cursor-pointer"
           }`}
         >
@@ -49,7 +49,7 @@ export default function Pagination({ count }) {
             key={index}
             onClick={() => updatePage(index + 1)}
             disabled={currentPage === index + 1}
-            className={`aspect-square w-8 text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange ${
+            className={`aspect-square text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange ${
               currentPage === index + 1
                 ? "cursor-not-allowed bg-DarkOrange"
                 : "cursor-pointer bg-DarkOrange/50"
@@ -61,7 +61,7 @@ export default function Pagination({ count }) {
         <button
           onClick={nextPage}
           disabled={currentPage === pageCount}
-          className={`flex aspect-square w-8 items-center justify-center bg-DarkOrange text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/70 ${
+          className={`flex aspect-square items-center justify-center bg-DarkOrange text-sm font-medium text-white transition-all duration-200 ease-linear hover:bg-DarkOrange/70 ${
             currentPage === pageCount ? "cursor-not-allowed" : "cursor-pointer"
           }`}
         >
