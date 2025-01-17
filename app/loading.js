@@ -1,7 +1,7 @@
-import { ClipLoader } from "react-spinners";
-
-function Loader() {
-  return <ClipLoader color="#123abc" loading={true} size={50} />;
+export default function Loader() {
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <div className="loader"></div>
+    </div>
+  );
 }
-
-export default Loader;

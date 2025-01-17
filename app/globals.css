@@ -14,6 +14,25 @@
   background: orange;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.paginate::-webkit-scrollbar-thumb:hover {
   opacity: 0.5;
+}
+
+.loader {
+  width: 6.4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: yellow;
+  background:
+    radial-gradient(farthest-side, orange 94%, orange) top/10px 10px no-repeat,
+    conic-gradient(#0000 30%, orange);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 10px), #000 0);
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 10px), #000 0);
+  animation: rotate 1.5s infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
 }

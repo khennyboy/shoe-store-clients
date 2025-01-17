@@ -2,6 +2,8 @@ import { Kumbh_Sans } from "next/font/google";
 import "./globals.css";
 import Nav from "./_components/nav";
 import { Suspense } from "react";
+import Provider from "./_components/queryclient";
+import Footer from "./_components/footer";
 
 const kumbh = Kumbh_Sans({
   subsets: ["latin"],
@@ -20,15 +22,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${kumbh.className} `}>
-        <Suspense fallback="loading...">
-          <Nav />
-        </Suspense>
-        <div className="mb-12 mt-24 px-4 md:px-8 lg:mt-28 xl:px-12">
-          {children}
-        </div>
-      </body>
-    </html>
+    <Provider>
+      <html lang="en">
+        <body className={`${kumbh.className} `}>
+          <Suspense fallback="loading...">
+            <Nav />
+          </Suspense>
+          <div className="mb-12 mt-24 px-4 md:px-8 lg:mt-28 xl:px-12">
+            {children}
+          </div>
+          <Footer />
+        </body>
+      </html>
+    </Provider>
   );
 }

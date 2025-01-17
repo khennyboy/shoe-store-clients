@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import Cart from "./cart";
 import Login from "./login";
-import useNav from "./navhooks";
+import useNav from "../hooks/navhooks";
 import Profile from "./profile";
 
 const navLinks = [
