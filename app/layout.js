@@ -31,7 +31,9 @@ export default function RootLayout({ children }) {
           <div className="mb-12 mt-24 px-4 md:px-8 lg:mt-28 xl:px-12">
             {children}
           </div>
-          <Footer />
+          <Suspense>
+            <Footer />
+          </Suspense>
         </body>
       </html>
     </Provider>

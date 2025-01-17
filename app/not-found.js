@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function NotFound() {
+export default function NotFound() {
   return (
     <main className="mt-4 space-y-6 text-center">
       <h1 className="text-3xl font-semibold">
@@ -20,5 +20,3 @@ function NotFound() {
     </main>
   );
 }
-
-export default NotFound;
