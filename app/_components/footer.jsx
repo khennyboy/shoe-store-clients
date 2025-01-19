@@ -13,7 +13,6 @@ const navLinks = [
 export default function Footer() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const isFilter = searchParams.get("filter");
 
   return (
     <footer className="bg-gray-700 px-4 py-12 text-white md:px-8 xl:px-12">
