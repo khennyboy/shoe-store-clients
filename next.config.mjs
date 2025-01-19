@@ -10,10 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  env: {
-    supabaseUrl: process.env.supabaseUrl,
-    supabaseKey: process.env.supabaseKey,
-  },
 };
 
 export default nextConfig;
